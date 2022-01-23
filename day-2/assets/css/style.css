@@ -1,0 +1,156 @@
+/*
+h1 { 
+    color: red;
+} 
+
+.title-green{
+    color: green;
+}
+
+.title-40{
+    font-size: 40px;
+}
+
+h1{
+    color: blue !important;
+}
+
+
+h1{
+    color: orange !important;
+}
+*/
+
+/*
+this is a css comment
+*/
+
+/*
+.custom-bloc > h3{
+    color: orange;
+}
+.custom-bloc > p{
+    font-size: 28px;
+    color: red;
+    text-decoration: underline;
+    font-family: monospace;
+    text-align: justify;
+    text-transform: capitalize;
+    background-color: orange;
+    padding: 45px;
+    margin: 45px;
+}
+
+.custom-bloc > p > span{
+    color: blue;
+}
+*/
+
+
+.square{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    display: inline-block;
+}
+
+.circle{
+    height: 100px;
+    width: 100px;
+    background-color: orange;
+    border-radius: 50%;
+}
+
+
+
+body{
+    margin: 0;
+}
+
+.banner{
+    height: calc( 100vh - 100px );
+    display: flex;
+    align-items: end;
+    padding-bottom: 100px;
+    padding-left: 30px;
+    padding-right: 300px;
+
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+ 
+
+.banner > div >  h1{
+    margin: 0;
+}
+
+.banner > div {
+    background-color: #ffffff85;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.col{
+    width: 50%;
+    float: left;
+}
+
+.feild{
+    width: 500px;
+    height: 300px;
+    background-color: green;
+    position: relative;
+}
+
+.ball{
+    background-color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+.triangle{
+    position: relative;
+    margin-top: 100px;
+}
+
+.el1{
+    position: absolute;
+    background: #4caf50;
+    height: 100px;
+    width: 100px;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.el2{
+    position: absolute;
+    background: #ffffff;
+    height: 97px;
+    width: 164px;
+    top: -26px;
+    left: 0;
+    z-index: 5;
+    transform: rotate(45deg);
+}
+
+.back-to-top{
+    position: fixed;
+    z-index: 10000000000000000;
+    bottom: 25px;
+    right: 25px;
+    background-color: #ff9800;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 6px 9px 2px #bababa;
+}
+}
