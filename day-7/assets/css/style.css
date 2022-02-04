@@ -1,0 +1,17 @@
+.sidemenu{
+    height: 80vh;
+}
+
+.tool-bar {
+    margin-top: 20px;
+    background-color: #d4d4d4;
+    padding: 14px;
+}
+
+.tool-bar > i {
+    margin-right: 20px;
+}
+
+.tool-bar > i.active{
+    color: white;
+}
