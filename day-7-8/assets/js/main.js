@@ -2,6 +2,11 @@ const listViewBtn = document.getElementById("list-view-btn");
 const gridViewBtn = document.getElementById("grid-view-btn");
 const blocProduits = document.getElementById("prod-lits");
 const keywordsInput = document.getElementById("keywords");
+const pricefilter = document.getElementById("pricefilter");
+
+
+var keywords = ''
+var min = 0;
 
 
 var viewStyle = 0;
@@ -41,20 +46,47 @@ gridViewBtn.addEventListener("click", function () {
 keywordsInput.addEventListener("keyup",function(e){
     const val  = e.target.value;
 
-    initView(val);
+    keywords = val;
+    initView();
 
 })
 
 
 
-function initView(keywords = '') {
+
+pricefilter.addEventListener("change",function(e){
+    console.log(e.target.value);
+
+    const percent = Number(e.target.value);
+
+    /**
+     * percent ?     
+     * 100  max
+     */
+
+
+    const val =   ( percent * max() / 100 );
+
+    console.log(val);
+
+    document.getElementById("minPrice").innerHTML = val;
+
+    min = val;
+
+    initView()
+})
+
+
+
+                                   
+function initView() {
 
 
     console.log(keywords);
 
     let blocHTML = '';
 
-    products.filter( (p) =>    p.name.toLowerCase().indexOf(keywords.toLowerCase()) != -1    )  .map((p) => {
+    products.filter( (p) =>   ( p.name.toLowerCase().indexOf(keywords.toLowerCase()) != -1) && ( p.price > min )    )  .map((p) => {
         if (viewStyle == 0) {
             blocHTML = blocHTML + `
             <div class="col-sm-4 mb-3">
@@ -96,4 +128,34 @@ function initView(keywords = '') {
 }
 
 
+function max(){
+    let max = 0;
+
+    /*for (let i = 0; i < products.length; i++) {
+        const produit = products[i];
+
+        if (produit.price > max) {
+            max = produit.price;
+        }
+
+        
+    }*/
+
+
+    products.map((p)=>{
+        if (p.price > max ) {
+            max = p.price;
+        }
+    })
+
+    return max;
+}
+
+
 initView();
+
+
+
+document.getElementById("max-price").innerHTML = max();
+
+

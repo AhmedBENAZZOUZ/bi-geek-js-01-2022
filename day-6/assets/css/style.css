@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+#feild{
+    height: 100vh;
+    width: 100%;
+    background-color: orange;
+    position: relative;
+}
+
+#feild > .shape{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+}
+
+
+.particule{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: chartreuse;
+    z-index: 10000000000;
+}
