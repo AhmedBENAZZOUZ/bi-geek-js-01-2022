@@ -2,6 +2,9 @@
 import './App.css';
 import Employee from './componenets/Employee';
 import React from 'react';
+import LikeBtn from './componenets/LikeBtn';
+import Clock from './componenets/Clock';
+import NewsFeeds from './componenets/NewsFeeds';
 
 class App extends React.Component{
   constructor(props){
@@ -13,7 +16,9 @@ class App extends React.Component{
   
     return (
       <div >
-        { title }
+        {
+          /**
+           * { title }
         <p>
           List of employees:
         </p>
@@ -21,6 +26,18 @@ class App extends React.Component{
         <Employee  fired={ false } year={ 2006 }  email="test@gmail.com" fullname="test taher" phone="11223366" />
         <Employee  fired={ true }  year={ 2008 }  email="test@gmail.com" fullname="test taher" phone="11223366" />
   
+           */
+
+
+
+        <div>
+          <NewsFeeds />
+        
+        </div>
+
+
+
+        }
       </div>
     );
   }
