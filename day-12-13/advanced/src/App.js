@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFound from './pages/NotFoundPage';
 import ArticleDetailsPage from './pages/ArticleDetailsPage';
+import ListUsersPage from './pages/ListUsersPage';
 
 const globalStyle = {
   title: { color:"red" , backgroundColor:'orange' },
@@ -41,6 +42,8 @@ export default class App extends React.Component{
         <Switch>
 
         <Route path="/" component={HomePage}  exact />
+        <Route path="/users" component={ListUsersPage}  exact />
+        
         <Route path="/about" component={AboutPage}  exact />
         <Route path="/article/:id" component={ArticleDetailsPage}  exact />
         
