@@ -1,4 +1,5 @@
 const express = require('express')
+const { getProductsList, findByID, findProductByID, deleteProductByID } = require('./my-modules/products')
 const { addNewTodo, getTodosList } = require('./my-modules/todo')
 const app = express()
 const port = 8080
@@ -33,6 +34,28 @@ app.post('/api/create-new-todo',(req,res)=>{
 app.get('/api/todos',(req,res)=>{
     getTodosList(req,res)
 })
+
+
+
+app.get('/api/products',(req,res)=>{
+     
+  getProductsList(req,res);
+})
+
+app.get('/api/product',(req,res)=>{
+     
+    findProductByID(req,res);
+  })
+  
+app.delete('/api/product/delete',(req,res)=>{
+    
+    deleteProductByID(req,res);
+})
+
+
+ 
+
+
 
 app.listen(port, () => {
   console.log(`Our app listening on port ${port}`)
