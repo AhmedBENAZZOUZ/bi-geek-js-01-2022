@@ -38,6 +38,60 @@ exports.getProductsList = function(req,res){
 
 
 
+
+exports.updateProductByID = function (req,res){
+    let stream = [];
+    req.on('data',(info)=>{
+        stream.push(info);
+    }).on('end',()=>{
+        const body = (JSON.parse(stream.toString()));
+        
+        const mongoClient = require('mongodb').MongoClient;
+
+        mongoClient.connect('mongodb://localhost:27017',function(err,db){
+            console.log("connected");
+
+            const appDb = db.db('bigeek');
+
+
+            const id = req.query.id;
+
+            console.log(id);
+
+            let filter = {};
+
+            if (req.query.mark != null) {
+                filter.mark = req.query.mark;
+            }
+             
+            appDb.collection('produits').updateMany( 
+                
+                filter,
+
+                { $set : body }
+                
+                
+                ).then((response )=>{
+                    res.send({ success:true, message:"updated successfully." });
+                }).catch((err)=>{
+                    res.send({success:false, message:"Something went wrong, pleaase try again."})
+                }) 
+               
+            
+            
+           
+        });
+
+    }) 
+
+
+   
+}
+
+
+
+
+
 exports.findProductByID = function(req,res){ 
     const mongoClient = require('mongodb').MongoClient;
 

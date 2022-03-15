@@ -1,5 +1,6 @@
 const express = require('express')
-const { getProductsList, findByID, findProductByID, deleteProductByID } = require('./my-modules/products')
+const { createUser, authUser } = require('./auth')
+const { getProductsList, findByID, findProductByID, deleteProductByID, updateProductByID } = require('./my-modules/products')
 const { addNewTodo, getTodosList } = require('./my-modules/todo')
 const app = express()
 const port = 8080
@@ -26,6 +27,26 @@ app.post('/add-fruit', (req, res) => {
 })
  */
   
+
+app.use(function(req,res,next){
+
+    const headers  = req.headers;
+ 
+    const key = headers.authorization;
+ 
+    if (req.path === '/api/create-user') {
+        next();
+    }else if (req.path === '/api/auth') {
+        next();
+    } else{
+        if ( key == null){
+            res.send( { success : false , message : "full auth is required" } );
+        }else{
+            next();
+        }
+    } 
+    
+})
 
 app.post('/api/create-new-todo',(req,res)=>{
     addNewTodo(req,res);
@@ -55,7 +76,19 @@ app.delete('/api/product/delete',(req,res)=>{
 
  
 
+app.put('/api/product/update',(req,res)=>{
+    updateProductByID(req,res);
+})
 
+
+
+app.post('/api/create-user',(req,res)=>{
+    createUser(req,res);
+})
+
+app.post('/api/auth',(req,res)=>{
+    authUser(req,res);
+})
 
 app.listen(port, () => {
   console.log(`Our app listening on port ${port}`)
