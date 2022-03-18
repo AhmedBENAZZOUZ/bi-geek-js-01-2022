@@ -10,6 +10,15 @@ export default class HomePage extends React.Component {
     super(props);
   }
 
+  checkUserAuth(){
+    if (localStorage.getItem('token') == null) {
+      this.props.history.push('/auth');
+    }
+  }
+  componentDidMount(){
+    this.checkUserAuth();
+  }
+
   render(){
     return(
       <div className="App">

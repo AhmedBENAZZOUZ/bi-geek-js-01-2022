@@ -14,6 +14,9 @@ import {
 import HomePage from './pages/Home';
 import AuthPage from './pages/Auth';
 import CreateAccountPage from './pages/create-account';
+import ClientsPage from './pages/clients';
+import AddNewClient from './pages/add-client';
+import ClientsVehiculesList from './pages/clients-vehicules';
 
 export default class App extends React.Component {
 
@@ -34,6 +37,16 @@ export default class App extends React.Component {
             <Route path="/" component={ HomePage } exact/>
             <Route path="/auth" component={ AuthPage } exact/>
             <Route path="/create-account" component={ CreateAccountPage } exact/>
+            <Route path="/clients" component={ ClientsPage } exact/>
+            <Route path="/clients/add" component={ AddNewClient } exact/>
+            <Route path="/clients/vehicules/:id" component={ ClientsVehiculesList } exact/>
+            
+
+            
+            
+            
+
+            
             
             
           </Switch>

@@ -33,6 +33,12 @@ export default class AuthPage extends React.Component {
         .then(result => {
             if (result.success === true) {
                 console.log(result);
+                
+                localStorage.setItem('token',result.token)
+
+                // redirect to home page
+                this.props.history.push('/');
+
             } else {
                 this.setState({
                     errorMSG: result.message
