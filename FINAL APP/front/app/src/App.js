@@ -17,6 +17,7 @@ import CreateAccountPage from './pages/create-account';
 import ClientsPage from './pages/clients';
 import AddNewClient from './pages/add-client';
 import ClientsVehiculesList from './pages/clients-vehicules';
+import AddNewVehicule from './pages/add-vehicule';
 
 export default class App extends React.Component {
 
@@ -40,6 +41,9 @@ export default class App extends React.Component {
             <Route path="/clients" component={ ClientsPage } exact/>
             <Route path="/clients/add" component={ AddNewClient } exact/>
             <Route path="/clients/vehicules/:id" component={ ClientsVehiculesList } exact/>
+            
+            <Route path="/clients/vehicules/add/:id" component={ AddNewVehicule } exact/>
+            
             
 
             

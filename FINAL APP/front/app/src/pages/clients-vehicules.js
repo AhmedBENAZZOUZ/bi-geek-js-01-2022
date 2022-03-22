@@ -10,35 +10,33 @@ export default class ClientsVehiculesList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            vehicules : []
+            idClient: props.match.params.id,
+            vehicules : [],
+            errorMSG:''
         }
        
     }
 
 
     initDAta(){
-        /*var myHeaders = new Headers();
-        myHeaders.append("Authorization", localStorage.getItem('token') );
+        var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
- 
+        myHeaders.append("Authorization", localStorage.getItem('token'));
+        
         var requestOptions = {
-        method: 'GET',
-        headers: myHeaders, 
-        redirect: 'follow'
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
         };
-
-        fetch("http://localhost:8080/api/clients/list", requestOptions)
-        .then(response => response.json())
-        .then(result =>{
-             this.setState({
-                 clients: result
-             })
-        })
-        .catch(error => {
-            this.setState({
-                errMSG: 'Network error.'
-            })
-        });*/
+        
+        fetch("http://localhost:8080/api/client/vehicules?owner="+this.state.idClient, requestOptions)
+          .then(response => response.json())
+          .then(result => this.setState({
+            vehicules: result
+          }))
+          .catch(error => this.setState({
+              errorMSG:'Network error'
+          }));
     }
 
     checkUserAuth() {
@@ -75,32 +73,38 @@ export default class ClientsVehiculesList extends React.Component {
                         <div class="row">
                             <div class="col-lg-12">
 
-                                <div class="card">
+                                <div class="card mb-4">
                                     <div class="card-body">
                                         <div className="d-flex justify-content-between">
                                             <h5 class="card-title">Vechiules list</h5>
 
-                                            <Link to={ '/clients/add' } className="btn btn-success add-btn" ><i className='bx bxs-plus-circle'></i> Add new</Link>
+                                            <Link to={ '/clients/vehicules/add/'+this.state.idClient } className="btn btn-success add-btn" ><i className='bx bxs-plus-circle'></i> Add new</Link>
                                         </div>
-                                        
-
-                                        <div className="datatable table-responsive">
-                                        <table className='table'>
-                                            <tr>
-                                                <th>firstname</th>
-                                                
-                                            </tr>
-
-                                            <tbody>
-                                                 
-                                            </tbody>
-                                        </table>
-                                        </div>
-
- 
-
                                     </div>
                                 </div>
+
+
+                               <div className="row">
+                               {
+                                    this.state.vehicules.map((v)=>{
+                                        return(
+                                            <div className='col-sm-6 col-md-4'>
+                                                <div className="card w-100">
+                                                    <div className="card-body" >
+                                                        <h3>{ v.registration }  <span className='vehicule-card' style={ { backgroundColor: v.color } }></span> </h3>
+                                                        <p className='text-muted'>
+                                                            { v.mark } { v.model }
+                                                        </p>
+
+                                                        <Link to={ '' }>more details</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        );
+                                    })
+                                }
+                               </div>
 
                             </div>
                         </div>

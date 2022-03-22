@@ -10,6 +10,7 @@ export default class ClientsPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            filter:'',
             clients : []
         }
        
@@ -69,6 +70,14 @@ export default class ClientsPage extends React.Component {
                     </div>
 
 
+                    <div class="pagetitle">
+                        <div className='form-group'>
+                            <input type="search" className='form-control' onChange={ (e)=>{ this.setState({ filter: e.target.value}) } } />
+                        </div>
+                    </div>
+                    
+
+
 
                     <section class="section">
                         <div class="row">
@@ -100,7 +109,11 @@ export default class ClientsPage extends React.Component {
 
                                             <tbody>
                                                 {
-                                                    this.state.clients.map( (c)=>{
+                                                    this.state.clients.filter( (c)=> 
+                                                    (c.cin.indexOf( this.state.filter ) != -1)
+                                                    ||
+                                                    (c.firstname.indexOf( this.state.filter ) != -1)
+                                                    ).map( (c)=>{
                                                         return ( 
                                                         <tr>
                                                             <td>{ c.firstname }</td>
