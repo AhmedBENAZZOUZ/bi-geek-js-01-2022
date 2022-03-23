@@ -163,3 +163,28 @@ exports.getInterventionsListByVehiculeID = function(req,res){
         });
  
 }
+
+
+
+
+
+exports.getOperationsList = function(req,res){
+      
+    const mongoClient = require('mongodb').MongoClient;
+
+    mongoClient.connect('mongodb://localhost:27017',function(err,db){
+        console.log("connected");
+
+        const appDb = db.db('mygarageapp'); 
+        
+        
+
+        appDb.collection('operations').find({}).toArray().then((response)=>{
+            res.send(response)
+        }).catch((err)=>{
+            res.send({success:false, message:"Something went wrong, pleaase try again."})
+        })
+       
+    });
+
+}

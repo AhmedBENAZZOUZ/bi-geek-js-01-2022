@@ -5,7 +5,7 @@ const port = 8080
 var jwt = require('jsonwebtoken');
 const cors = require('cors');
 const { createNewClient, getAllClients } = require('./my-modules/clients');
-const { addNewVehicule, getClientVehicules } = require('./my-modules/vehicules');
+const { addNewVehicule, getClientVehicules, findVehiculeByID, addNewIntervention, getInterventionsListByVehiculeID, getOperationsList } = require('./my-modules/vehicules');
 
 app.use(cors())
 
@@ -60,6 +60,25 @@ app.post('/api/client/add-vehicule',(req,res)=>{
 
 app.get('/api/client/vehicules',(req,res)=>{
   getClientVehicules(req,res);
+})
+
+
+
+app.get('/api/client/vehicule/details',(req,res)=>{
+  findVehiculeByID(req,res);
+})
+
+
+app.post('/api/client/vehicule/intervention/add',(req,res)=>{
+  addNewIntervention(req,res);
+})
+
+app.get('/api/client/vehicule/details/interventions',(req,res)=>{
+  getInterventionsListByVehiculeID(req,res);
+})
+
+app.get('/api/operations/list',(req,res)=>{
+  getOperationsList(req,res);
 })
 
 

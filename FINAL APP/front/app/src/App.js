@@ -18,6 +18,8 @@ import ClientsPage from './pages/clients';
 import AddNewClient from './pages/add-client';
 import ClientsVehiculesList from './pages/clients-vehicules';
 import AddNewVehicule from './pages/add-vehicule';
+import VehiculesDetailsPage from './pages/vehicule-details';
+import AddNewInterventionPage from './pages/add-new-intervention';
 
 export default class App extends React.Component {
 
@@ -43,6 +45,10 @@ export default class App extends React.Component {
             <Route path="/clients/vehicules/:id" component={ ClientsVehiculesList } exact/>
             
             <Route path="/clients/vehicules/add/:id" component={ AddNewVehicule } exact/>
+            <Route path="/clients/vehicules/details/:id" component={ VehiculesDetailsPage } exact/>
+            
+            <Route path="/clients/vehicules/intervention/add/:vehicule" component={ AddNewInterventionPage } exact/>
+            
             
             
 

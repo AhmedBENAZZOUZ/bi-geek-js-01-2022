@@ -96,7 +96,7 @@ export default class ClientsVehiculesList extends React.Component {
                                                             { v.mark } { v.model }
                                                         </p>
 
-                                                        <Link to={ '' }>more details</Link>
+                                                        <Link to={ '/clients/vehicules/details/'+v._id }>more details</Link>
                                                     </div>
                                                 </div>
                                             </div>
